@@ -1,0 +1,31 @@
+﻿@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Регистрация";
+}
+
+<section>
+    <form asp-action="Registration" method="post">
+        <div class="reg_700">
+            <div style="height:10%;"><span class="reg">Регистрация</span></div>
+            <div style="margin-left:3%">
+                <span class="reg_703">Логин (Ник в игре)</span>
+                <div class="reg_704">
+                    <input class="reg_705" type="text" value="Логин" name="loginOrEmail" />
+                </div>
+            </div>
+            <div style="margin-left:3%">
+                <span class="reg_708">Пароль</span>
+                <div class="reg_709">
+                    <input class="reg_710" type="password" value="*********" name="password">
+                </div>
+            </div>
+            <div>
+                <p style="color:red; font-size: 12px; margin-left: 15%; top:5%; position:relative">@ViewBag.Enter</p>
+                <button class="reg_713" type="submit">Зарегистрироваться</button>
+            </div>
+            <div>
+                <a asp-action="Authorization" class="reg_716">Авторизация</a>
+            </div>
+        </div>
+    </form>
+</section>

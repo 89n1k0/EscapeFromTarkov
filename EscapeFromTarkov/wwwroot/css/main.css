@@ -1,0 +1,33 @@
+﻿.grid-container-main div {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    border: 1px solid rgba(205,201,218,1);
+    border-radius: 3px;
+    width: 70%;
+    height: 50%;
+    justify-content: center; /* Выравниваем по горизонтали */
+    align-items: center; /* Выравниваем по вертикали */
+    text-align: center;
+    display: flex;
+    font-size: 20px;
+    background-color: rgba(50,50,50,70%);
+}
+.main-container {
+    overflow-y: scroll;
+    display: grid;
+    grid-template-columns: 1fr; /* Один столбец */
+    height: 85%;
+    width: 90%;
+    margin: 2%;
+    position: relative;
+    border: 1px solid rgba(205,201,218,1);
+    background-color: rgba(50,50,50,70%);
+    border-radius: 3px;
+}
+.main-container div {
+    color: white;
+    margin:1%;
+}

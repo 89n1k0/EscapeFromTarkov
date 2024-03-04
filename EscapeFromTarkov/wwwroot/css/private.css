@@ -1,0 +1,23 @@
+﻿.main-container-privateacc {
+    display: grid;
+    grid-template-columns: 2fr; /* Один столбец */
+    height: 85%;
+    width: 90%;
+    margin: 2%;
+    position: relative;
+    border: 1px solid rgba(205,201,218,1);
+    background-color: rgba(50,50,50,70%);
+    border-radius: 3px;
+}
+.main-grid-item {
+    grid-column: span 2;
+    color: white;
+    font-size: 20px;
+    position: relative;
+    display: flex;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    justify-content: center;
+    align-items: center;
+}

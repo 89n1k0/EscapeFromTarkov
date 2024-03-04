@@ -1,0 +1,151 @@
+﻿.reg_700 {
+    width: 50%;
+    height: 55%;
+    background: rgba(50,50,50,70%);
+    opacity: 1;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    border: 3px solid rgba(0,0,0,1);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.reg {
+    width: 100%;
+    color: rgba(255,255,255,1);
+    position: absolute;
+    font-family: Manrope;
+    font-weight: bold;
+    font-size: 30px;
+    top: 3%;
+    opacity: 1;
+    text-align: center;
+}
+
+.reg_703 {
+    width: 45px;
+    color: rgba(255,255,255,1);
+    position: relative;
+    font-family: Manrope;
+    font-size: 20px;
+    opacity: 1;
+    text-align: left;
+    margin-left: 5%;
+}
+
+.reg_704 {
+    width: 298px;
+    height: 40px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    transform: translate(-50%, -50%);
+    top: 25%;
+    left: 25%;
+    opacity: 1;
+    position: absolute;
+    overflow: hidden;
+    margin-top: 2%;
+}
+
+.reg_705 {
+    width: 298px;
+    height: 40px;
+    background: rgba(109,101,85,1);
+    opacity: 1;
+    position: relative;
+    border: 1px solid rgba(205,201,218,1);
+    border-radius: 3px;
+    overflow: hidden;
+    text-align: left;
+    color: rgb(255, 255, 255);
+    padding-left: 3%;
+}
+
+.reg_708 {
+    width: 54px;
+    color: rgba(255,255,255,1);
+    position: relative;
+    font-family: Manrope;
+    font-size: 20px;
+    opacity: 1;
+    text-align: left;
+    margin-left: 5%;
+}
+
+.reg_709 {
+    width: 298px;
+    height: 40px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    transform: translate(-50%, -50%);
+    top: 45%;
+    left: 25%;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    overflow: hidden;
+    margin-top: 2%;
+}
+
+.reg_710 {
+    width: 298px;
+    height: 40px;
+    background: rgba(109,101,85,1);
+    opacity: 1;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    border: 1px solid rgba(205,201,218,1);
+    border-radius: 3px;
+    overflow: hidden;
+    text-align: left;
+    color: rgb(255, 255, 255);
+    padding-left: 3%;
+}
+
+.reg_713 {
+    width: 298px;
+    height: 50px;
+    background: rgba(109,101,85,1);
+    opacity: 1;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+    font-family: Manrope;
+    font-weight: Bold;
+    font-size: 16px;
+    color: rgba(255,255,255,1);
+}
+
+.reg_715 {
+    width: 147px;
+    color: rgba(62,50,109,1);
+    position: absolute;
+    margin-left: 5%;
+    font-family: Manrope;
+    font-weight: Medium;
+    font-size: 14px;
+    opacity: 1;
+    text-align: left;
+    text-decoration: underline;
+}
+
+.reg_716 {
+    color: rgba(255,255,255,1);
+    position: fixed;
+    font-family: Manrope;
+    font-size: 20px;
+    opacity: 1;
+    left: 50%;
+    transform: translate(-50%, -0%);
+}
