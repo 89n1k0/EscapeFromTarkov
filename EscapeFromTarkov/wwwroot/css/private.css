@@ -1,6 +1,6 @@
 ﻿.main-container-privateacc {
     display: grid;
-    grid-template-columns: 2fr; /* Один столбец */
+    grid-template-columns: repeat(2, 1fr); /* Один столбец */
     height: 85%;
     width: 90%;
     margin: 2%;
@@ -20,4 +20,44 @@
     transform: translate(-50%, -50%);
     justify-content: center;
     align-items: center;
+}
+.text-item {
+    grid-column: 1;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    display:flex;
+    font-size:17px;
+    color: white;
+}
+.main-container-privateacc input {
+    width: 350px;
+    height: 40px;
+    background: rgba(109,101,85,1);
+    opacity: 1;
+    position: relative;
+    border: 1px solid rgba(205,201,218,1);
+    border-radius: 3px;
+    overflow: hidden;
+    grid-column: 2;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+}
+.main-container-privateacc button {
+    width: 298px;
+    height: 50px;
+    background: rgba(109,101,85,1);
+    opacity: 1;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+    font-family: Manrope;
+    font-weight: Bold;
+    font-size: 16px;
+    color: rgba(255,255,255,1);
+    grid-column: span 2;
 }

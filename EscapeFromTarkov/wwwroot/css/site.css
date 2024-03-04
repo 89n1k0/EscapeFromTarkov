@@ -4,6 +4,10 @@ body {
     min-height: 100%;
     font-family: Neusa-DemiBold;
 }
+a {
+    color: white;
+    text-decoration: none;
+}
 header {
     width: 100%;
     height: 70px;

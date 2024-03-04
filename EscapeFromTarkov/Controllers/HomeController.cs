@@ -30,7 +30,8 @@ namespace EscapeFromTarkov.Controllers
         }
         public IActionResult PrivateAcc()
         {
-            return View();
+            Пользователь пользователь = db.Пользовательs.Where(x => x.ПользовательId == CurrentUser.CurrentClientId).FirstOrDefault();
+            return View(пользователь);
         }
         [AllowAnonymous]
         public IActionResult Authorization()
