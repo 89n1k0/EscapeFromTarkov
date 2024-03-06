@@ -1,0 +1,48 @@
+﻿@using static EscapeFromTarkov.Controllers.HomeController;
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Боссы";
+}
+@model PrivateAccViewModel
+<section>
+    <form asp-action="Bosses" method="get">
+        <div class="grid-main">
+            <div class="grid-container-main">
+                @foreach (var nps in Model.Boss)
+                {
+                    if (nps.Наименование != null)
+                    {
+                        <div>@nps.Наименование</div>
+                    }
+                }
+            </div>
+            <div class="main-container">
+                <div id="name"></div>
+                <img id="image" alt="Boss Image" class="boss-image" />
+                <div id="description"></div>
+
+            </div>
+        </div>
+    </form>
+</section>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.grid-container-main div').click(function () {
+            var bossName = $(this).text().trim();
+            $.ajax({
+                type: "GET",
+                url: '@Url.Action("GetBossInfo", "Home")',
+                data: { bossName: bossName },
+                success: function (data) {
+                    $('#name').text(data.name);
+                    $('#image').attr('src', data.image);
+                    $('#description').text(data.description)
+                },
+                error: function () {
+                    alert('Произошла ошибка при получении информации о боссе');
+                }
+            });
+        });
+    });
+</script>

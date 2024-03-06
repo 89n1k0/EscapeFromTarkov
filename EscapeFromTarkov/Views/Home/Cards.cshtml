@@ -1,0 +1,23 @@
+﻿@using static EscapeFromTarkov.Controllers.HomeController;
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Карты";
+}
+@model PrivateAccViewModel
+<section>
+    <form asp-action="Cards" method="get">
+        <div class="grid-main">
+            <div class="grid-container-main">
+                @foreach (var nps in Model.Card)
+                {
+                    if (nps.Наименование != null)
+                    {
+                        <div>@nps.Наименование</div>
+                    }
+                }
+            </div>
+            <div class="main-container">
+            </div>
+        </div>
+    </form>
+</section>

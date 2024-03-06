@@ -1,4 +1,7 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
-
-// Write your JavaScript code.
+﻿//document.querySelectorAll('.grid-container-main div').forEach((div, index) => {
+//    div.addEventListener('click', async () => {
+//        const response = await fetch(`/Bosses/GetBossInfo?bossIndex=${index}`);
+//        const bossInfo = await response.json();
+//        document.querySelector('.main-container').innerHTML = bossInfo;
+//    });
+//});

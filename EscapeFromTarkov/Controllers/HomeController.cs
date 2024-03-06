@@ -33,6 +33,66 @@ namespace EscapeFromTarkov.Controllers
             Пользователь пользователь = db.Пользовательs.Where(x => x.ПользовательId == CurrentUser.CurrentClientId).FirstOrDefault();
             return View(пользователь);
         }
+        public class PrivateAccViewModel
+        {
+            public IEnumerable<Персонажи>? Person { get; set; } 
+            public IEnumerable<Босс>? Boss { get; set; }
+            public IEnumerable<Карта>? Card { get; set; }
+            public string name;
+            public byte[] image;
+            public string description;
+        }
+        public IActionResult NPS()
+        {
+            var персонажи = db.Персонажиs.ToList();
+            var ViewModel = new PrivateAccViewModel()
+            {
+                Person = персонажи
+            };
+            return View(ViewModel);
+        }
+        public IActionResult GetBossInfo(string bossName)
+        {
+            Босс boss = db.Боссs.FirstOrDefault(x => x.Наименование == bossName);
+
+            if (boss != null)
+            {
+                var bossInfo = new
+                {
+                    name = boss.Наименование,
+                    image = boss.Изображение,
+                    description = boss.Описание
+                };
+
+                return Json(bossInfo);
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
+        public IActionResult GetBossName(string bossName)
+        {
+            return Content(bossName, "text/plain");
+        }
+        public IActionResult Bosses()
+        {
+            var персонажи = db.Боссs.ToList();
+            var ViewModel = new PrivateAccViewModel()
+            {
+                Boss = персонажи
+            };
+            return View(ViewModel);
+        }
+        public IActionResult Cards()
+        {
+            var персонажи = db.Картаs.ToList();
+            var ViewModel = new PrivateAccViewModel()
+            {
+                Card = персонажи
+            };
+            return View(ViewModel);
+        }
         [AllowAnonymous]
         public IActionResult Authorization()
         {
@@ -66,7 +126,7 @@ namespace EscapeFromTarkov.Controllers
                 ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, "Cookies");
 
                 HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
-                return Redirect("/swagger/index.html");
+                return RedirectToAction("AdminPanelBoss", "Home");
             }
             else
             {
@@ -105,6 +165,10 @@ namespace EscapeFromTarkov.Controllers
             }
         }
 
+        public IActionResult AdminPanelBoss()
+        {
+            return View();
+        }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
