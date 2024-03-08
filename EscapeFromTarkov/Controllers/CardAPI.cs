@@ -46,8 +46,6 @@ namespace EscapeFromTarkov.Controllers
 
         [HttpPut]
         [Route("Card/updateCard")]
-        [SwaggerOperation("Загрузить изображение")]
-        [SwaggerResponse(200, "Изображение успешно загружено")]
         public async Task<IActionResult> CardUpdate(int id, string name, string description, IFormFile file)
         {
             var card = db.Картаs.Where(x => x.КартаId == id).FirstOrDefault();
@@ -86,8 +84,6 @@ namespace EscapeFromTarkov.Controllers
         }
         [HttpDelete]
         [Route("Card/deleteCard")]
-        [SwaggerOperation("Загрузить изображение")]
-        [SwaggerResponse(200, "Изображение успешно загружено")]
         public async Task<IActionResult> CardDelete(int id)
         {
             var card = db.Картаs.Where(x => x.КартаId == id).FirstOrDefault();

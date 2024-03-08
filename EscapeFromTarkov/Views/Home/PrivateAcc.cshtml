@@ -9,7 +9,7 @@
             <div class="grid-container-main">
                 <div><a asp-action="MainWindow">Об игре</a></div>
                 <div><a asp-action="PrivateAcc">Личный кабинет</a></div>
-                <div><a asp-action="Bosses">Боссы</a><</div>
+                <div><a asp-action="Bosses">Боссы</a></div>
                 <div><a asp-action="Cards">Карты</a></div>
                 <div><a asp-action="NPS">НПС</a></div>
             </div>
@@ -24,15 +24,15 @@
                 <div class="text-item" style="grid-row:8;">Убийства</div>
                 <div class="text-item" style="grid-row:9;">Убийства Чвк</div>
 
-                <input type="text" value="@Model.Логин" style="grid-row:2;" />
-                <input type="password" value="@Model.Пароль" style="grid-row:3;" />
-                <input type="number" value="@Model.Выживания" style="grid-row:4;" />
-                <input type="number" value="@Model.Смерти" style="grid-row:5;" />
-                <input type="number" value="@Model.ПотерянБезвести" style="grid-row:6;" />
-                <input type="number" value="@Model.КоличествоРейдов" style="grid-row:7;" />
-                <input type="number" value="@Model.Убийства" style="grid-row:8;" />
-                <input type="number" value="@Model.УбийстваЧвк" style="grid-row:9;" />
-                <button type="submit">Сохранить</button>
+                <input type="text" value="@Model.Логин" style="grid-row:2;" name="login"/>
+                <input type="password" value="@Model.Пароль" style="grid-row:3;" name="password"/>
+                <input type="number" value="@Model.Выживания" style="grid-row:4;" name="survival"/>
+                <input type="number" value="@Model.Смерти" style="grid-row:5;" name="death"/>
+                <input type="number" value="@Model.ПотерянБезвести" style="grid-row:6;" name="lost"/>
+                <input type="number" value="@Model.КоличествоРейдов" style="grid-row:7;" name="count"/>
+                <input type="number" value="@Model.Убийства" style="grid-row:8;" name="murders"/>
+                <input type="number" value="@Model.УбийстваЧвк" style="grid-row:9;" name="murdersChVK"/>
+                <button type="submit" action="">Сохранить</button>
             </div>
         </div>
     </form>

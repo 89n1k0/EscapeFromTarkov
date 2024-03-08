@@ -33,11 +33,28 @@ namespace EscapeFromTarkov.Controllers
             Пользователь пользователь = db.Пользовательs.Where(x => x.ПользовательId == CurrentUser.CurrentClientId).FirstOrDefault();
             return View(пользователь);
         }
+        [HttpPost]
+        public IActionResult PrivateAcc(string login, string password, int survival, int death, int lost, int count, int murders, int murdersChVK)
+        {
+            Пользователь пользователь = db.Пользовательs.Where(x => x.ПользовательId == CurrentUser.CurrentClientId).FirstOrDefault();
+            пользователь.Логин = login;
+            пользователь.Пароль = password;
+            пользователь.Выживания = survival;
+            пользователь.Смерти = death;
+            пользователь.ПотерянБезвести = lost;
+            пользователь.КоличествоРейдов = count;
+            пользователь.Убийства = murders;
+            пользователь.УбийстваЧвк = murdersChVK;
+            db.SaveChanges();
+            return View(пользователь);
+        }
         public class PrivateAccViewModel
         {
             public IEnumerable<Персонажи>? NPS { get; set; } 
             public IEnumerable<Босс>? Boss { get; set; }
             public IEnumerable<Карта>? Card { get; set; }
+            public IEnumerable<Оружие>? Weapon { get; set; }
+            public IEnumerable<Товары>? Product { get; set; }
             public string name;
             public string image;
             public string description;
@@ -187,7 +204,7 @@ namespace EscapeFromTarkov.Controllers
                 return RedirectToAction("Authorization", "Home");
             }
             else
-            if (password == null || login == null)
+            if (password == "" || login == "")
             {
                 var result = new SuccessResponse
                 {
@@ -198,7 +215,13 @@ namespace EscapeFromTarkov.Controllers
             }
             else
             {
-                db.Add(new Пользователь { Логин = login, Пароль = password, РолиId = 1 });
+                Пользователь пользователь = new Пользователь()
+                {
+                    Логин = login,
+                    Пароль = password,
+                    РолиId = 1
+                };
+                db.Add(пользователь);
                 db.SaveChanges();
                 return RedirectToAction("Authorization", "Home");
             }
@@ -230,6 +253,30 @@ namespace EscapeFromTarkov.Controllers
                 NPS = персонажи
             };
             return View(ViewModel);
+        }
+        public IActionResult AdminPanelWeapon()
+        {
+            var персонажи = db.Оружиеs.ToList();
+            var ViewModel = new PrivateAccViewModel()
+            {
+                Weapon = персонажи
+            };
+            return View(ViewModel);
+        }
+        public IActionResult AdminPanelProduct()
+        {
+            var персонажи = db.Товарыs.ToList();
+            var ViewModel = new PrivateAccViewModel()
+            {
+                Product = персонажи
+            };
+            return View(ViewModel);
+        }
+        public IActionResult Exit()
+        {
+            CurrentUser.CurrentAdminId = 0;
+            CurrentUser.CurrentClientId = 0;
+            return RedirectToAction("Authorization", "Home");
         }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
