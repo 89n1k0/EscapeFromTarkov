@@ -35,11 +35,11 @@ namespace EscapeFromTarkov.Controllers
         }
         public class PrivateAccViewModel
         {
-            public IEnumerable<Персонажи>? Person { get; set; } 
+            public IEnumerable<Персонажи>? NPS { get; set; } 
             public IEnumerable<Босс>? Boss { get; set; }
             public IEnumerable<Карта>? Card { get; set; }
             public string name;
-            public byte[] image;
+            public string image;
             public string description;
         }
         public IActionResult NPS()
@@ -47,7 +47,7 @@ namespace EscapeFromTarkov.Controllers
             var персонажи = db.Персонажиs.ToList();
             var ViewModel = new PrivateAccViewModel()
             {
-                Person = персонажи
+                NPS = персонажи
             };
             return View(ViewModel);
         }
@@ -57,10 +57,11 @@ namespace EscapeFromTarkov.Controllers
 
             if (boss != null)
             {
+                var imageBase64 = Convert.ToBase64String(boss.Изображение);
                 var bossInfo = new
                 {
                     name = boss.Наименование,
-                    image = boss.Изображение,
+                    image = "data:image/jpeg;base64," + imageBase64, // здесь указывается тип изображения и сама строка Base64
                     description = boss.Описание
                 };
 
@@ -71,9 +72,47 @@ namespace EscapeFromTarkov.Controllers
                 return NotFound();
             }
         }
-        public IActionResult GetBossName(string bossName)
+        public IActionResult GetNPSInfo(string bossName)
         {
-            return Content(bossName, "text/plain");
+            Персонажи boss = db.Персонажиs.FirstOrDefault(x => x.Наименование == bossName);
+
+            if (boss != null)
+            {
+                var imageBase64 = Convert.ToBase64String(boss.Изображение);
+                var bossInfo = new
+                {
+                    name = boss.Наименование,
+                    image = "data:image/jpeg;base64," + imageBase64, // здесь указывается тип изображения и сама строка Base64
+                    description = boss.Описание
+                };
+
+                return Json(bossInfo);
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
+        public IActionResult GetCardInfo(string bossName)
+        {
+            Карта boss = db.Картаs.FirstOrDefault(x => x.Наименование == bossName);
+
+            if (boss != null)
+            {
+                var imageBase64 = Convert.ToBase64String(boss.Изображение);
+                var bossInfo = new
+                {
+                    name = boss.Наименование,
+                    image = "data:image/jpeg;base64," + imageBase64, // здесь указывается тип изображения и сама строка Base64
+                    description = boss.Описание
+                };
+
+                return Json(bossInfo);
+            }
+            else
+            {
+                return NotFound();
+            }
         }
         public IActionResult Bosses()
         {
@@ -167,7 +206,30 @@ namespace EscapeFromTarkov.Controllers
 
         public IActionResult AdminPanelBoss()
         {
-            return View();
+            var персонажи = db.Боссs.ToList();
+            var ViewModel = new PrivateAccViewModel()
+            {
+                Boss = персонажи
+            };
+            return View(ViewModel);
+        }
+        public IActionResult AdminPanelCard()
+        {
+            var персонажи = db.Картаs.ToList();
+            var ViewModel = new PrivateAccViewModel()
+            {
+                Card = персонажи
+            };
+            return View(ViewModel);
+        }
+        public IActionResult AdminPanelNPS()
+        {
+            var персонажи = db.Персонажиs.ToList();
+            var ViewModel = new PrivateAccViewModel()
+            {
+                NPS = персонажи
+            };
+            return View(ViewModel);
         }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

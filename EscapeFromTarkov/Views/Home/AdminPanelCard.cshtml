@@ -1,11 +1,11 @@
 ﻿@using static EscapeFromTarkov.Controllers.HomeController;
 @{
     Layout = "_Layout";
-    ViewData["Title"] = "Данные о боссах";
+    ViewData["Title"] = "Данные о картах";
 }
 @model PrivateAccViewModel
 <section>
-    <form asp-action="AdminPanelBoss" method="get">
+    <form asp-action="AdminPanelCard" method="get">
         <div class="grid-main">
             <div class="grid-container-main">
                 <div><a asp-action="AdminPanelBoss">Боссы</a></div>
@@ -19,18 +19,18 @@
             <div class="main-container">
                 <table class="boss-table">
                     <tr>
-                        <th colspan="3" style="font-size:25px;">Боссы</th>
+                        <th colspan="3" style="font-size:25px;">Карты</th>
                     </tr>
                     <tr>
-                        <th сolspan="1">БоссId</th>
+                        <th сolspan="1">КартыId</th>
                         <th colspan="1">Наименование</th>
                         <th colspan="1">Описание</th>
                         @*<th>Изображение</th>*@
                     </tr>
-                    @foreach (var boss in Model.Boss)
+                    @foreach (var boss in Model.Card)
                     {
                         <tr>
-                            <td>@boss.БоссId</td>
+                            <td>@boss.КартаId</td>
                             <td>@boss.Наименование</td>
                             <td>@boss.Описание</td>
                             @*<td><img src="data:image/jpeg;base64,@Convert.ToBase64String(@boss.Изображение)" /></td>*@

@@ -8,7 +8,7 @@
     <form asp-action="NPS" method="get">
         <div class="grid-main">
             <div class="grid-container-main">
-                @foreach (var nps in Model.Person)
+                @foreach (var nps in Model.NPS)
                 {
                     if (nps.Наименование != null)
                     {
@@ -16,26 +16,31 @@
                     }
                 }
             </div>
-            <div class="main-container">
+            <div class="main-container-boss">
                 <div id="name"></div>
+                <img id="image" alt="Boss Image" class="boss-image" width="350" height="300" />
+                <div id="description"></div>
+
             </div>
         </div>
     </form>
 </section>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    $(document).ready(function() {
-        $('.grid-container-main div').click(function() {
+    $(document).ready(function () {
+        $('.grid-container-main div').click(function () {
             var bossName = $(this).text().trim();
             $.ajax({
                 type: "GET",
-                url: '@Url.Action("GetBossInfo", "Boss")', // указываем URL для обработки запроса
-                data: { bossName: bossName }, // передаем имя босса на сервер
-                success: function(data) {
-                    $('#name').html(data); // обновляем содержимое div с id "name" полученными данными
+                url: '@Url.Action("GetNPSInfo", "Home")',
+                data: { bossName: bossName },
+                success: function (data) {
+                    $('#name').text(data.name);
+                    $('#image').attr('src', data.image);
+                    $('#description').text(data.description)
                 },
-                error: function() {
-                    alert('Произошла ошибка при получении информации о боссе');
+                error: function () {
+                    alert('Произошла ошибка при получении информации о НПС');
                 }
             });
         });
